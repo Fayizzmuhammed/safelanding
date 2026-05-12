@@ -82,8 +82,16 @@ for(var i=0;i<22;i++){
   p.style.cssText='left:'+Math.random()*100+'%;bottom:-10px;width:'+size+'px;height:'+size+'px;opacity:'+(Math.random()*0.3+0.1)+';animation-duration:'+(Math.random()*18+12)+'s;animation-delay:-'+(Math.random()*12)+'s;--tx:'+(Math.random()-0.5)*70+'px;';
   container.appendChild(p);
 }
-document.getElementById('joinBtn').addEventListener('click',function(){
-  fbq('track','Subscribe');
+document.addEventListener("DOMContentLoaded", function() {
+  const buttons = document.querySelectorAll("a, button");
+  buttons.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      fbq('track', 'Subscribe');
+      setTimeout(function(){
+        window.location.href = btn.href;
+      }, 300);
+    });
+  });
 });
 </script>
 </body>
